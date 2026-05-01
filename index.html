@@ -30,51 +30,6 @@
             line-height: 1.6;
         }
 
-        /* --- Navbar (Üst Menü) --- */
-        header {
-            background-color: var(--white);
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-dark);
-            text-decoration: none;
-            letter-spacing: 2px;
-        }
-
-        .nav-logo span {
-            color: var(--primary-gold);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: var(--primary-gold);
-        }
-
         /* --- Hero Section (Karşılama Alanı) --- */
         .hero {
             display: flex;
@@ -171,20 +126,6 @@
             color: var(--text-light);
         }
 
-        /* --- Footer --- */
-        footer {
-            background-color: #111;
-            color: #888;
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 14px;
-        }
-
-        footer span {
-            color: var(--primary-gold);
-            font-weight: 600;
-        }
-
         /* --- Animasyonlar --- */
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-30px); }
@@ -198,11 +139,6 @@
 
         /* --- Mobil Uyumluluk --- */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-                padding: 20px;
-            }
             .hero h1 {
                 font-size: 28px;
             }
@@ -213,18 +149,6 @@
     </style>
 </head>
 <body>
-
-    <header>
-        <a href="#" class="nav-logo">MARLA <span>TECH</span></a>
-        <nav>
-            <ul>
-                <li><a href="#">Anasayfa</a></li>
-                <li><a href="#">Ürünler</a></li>
-                <li><a href="#">Hakkımızda</a></li>
-                <li><a href="#">İletişim</a></li>
-            </ul>
-        </nav>
-    </header>
 
     <section class="hero">
         <img src="logo.png" alt="Marla Technology Logo">
@@ -259,10 +183,6 @@
 
         </div>
     </section>
-
-    <footer>
-        &copy; 2026 <span>Marla Technology</span>. Tüm Hakları Saklıdır.
-    </footer>
 
 </body>
 </html>
