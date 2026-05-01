@@ -10,51 +10,61 @@
 
         :root {
             --primary-gold: #C5A059;
-            --dark-gold: #a67c00;
             --bg-color: #FAFAFA;
             --text-dark: #2C2C2C;
             --text-light: #666666;
             --white: #FFFFFF;
         }
 
-        * {
+        /* --- SIFIR KAYDIRMA (NO SCROLL) GARANTİSİ --- */
+        html, body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
+            width: 100vw;
+            height: 100vh; /* Sadece ekranın/iframe'in boyu kadar yer kaplar */
+            overflow: hidden; /* Dışarı taşan her şeyi gizler, kaydırmayı kapatır */
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-dark);
-            line-height: 1.6;
-            overflow: hidden; /* Sayfanın iframe içinde kaymasını engeller */
+            
+            /* Tarayıcıların varsayılan kaydırma çubuklarını tamamen gizler */
+            -ms-overflow-style: none;  /* IE ve Edge için */
+            scrollbar-width: none;  /* Firefox için */
         }
 
-        /* --- Hero Section (Karşılama Alanı) --- */
-        .hero {
+        html::-webkit-scrollbar, body::-webkit-scrollbar {
+            display: none; /* Chrome, Safari ve Opera için scroll bar gizleme */
+        }
+
+        /* --- Tüm İçeriği Kutuya Sığdıran Ana Taşıyıcı --- */
+        .main-container {
             display: flex;
             flex-direction: column;
+            justify-content: space-evenly; /* Öğeler arasına eşit boşluk bırakır */
             align-items: center;
-            justify-content: center;
+            height: 100%;
+            width: 100%;
+            padding: 2vh 4vw;
+            box-sizing: border-box;
+        }
+
+        /* --- Hero Section (Logo ve Slogan) --- */
+        .hero {
             text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
         }
 
         .hero img {
-            max-width: 250px;
-            margin-bottom: 30px;
-            animation: fadeInDown 1s ease-out;
+            max-height: 18vh; /* Logonun yüksekliği iframe'in yüksekliğine göre otomatik ayarlanır */
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 1vh;
         }
 
         .hero h1 {
-            font-size: 42px;
+            font-size: clamp(18px, 3.5vh, 42px); /* Ekran küçülürse font da küçülür */
             font-weight: 300;
+            margin: 0;
             color: var(--text-dark);
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            animation: fadeInUp 1s ease-out 0.3s backwards;
         }
 
         .hero h1 strong {
@@ -62,101 +72,91 @@
             color: var(--primary-gold);
         }
 
-        /* --- Hakkımızda Bölümü --- */
-        .about-section {
-            padding: 80px 10vw;
-            background-color: var(--white);
-        }
-
+        /* --- Hakkımızda Giriş --- */
         .about-intro {
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px auto;
+            max-width: 1000px;
         }
 
         .about-intro h2 {
-            font-size: 32px;
+            font-size: clamp(18px, 3vh, 32px);
             color: var(--primary-gold);
-            margin-bottom: 20px;
+            margin-bottom: 1vh;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
         .about-intro p {
-            font-size: 18px;
+            font-size: clamp(12px, 1.8vh, 18px);
             color: var(--text-light);
             font-weight: 300;
+            line-height: 1.4;
+            margin: 0;
         }
 
         /* --- Özellik Kartları --- */
         .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            display: flex;
+            flex-direction: row; /* Kartları yan yana dizer */
+            gap: 2vw;
+            width: 100%;
+            max-width: 1200px;
+            justify-content: center;
         }
 
         .feature-card {
-            background-color: var(--bg-color);
-            padding: 40px 30px;
+            flex: 1; /* Tüm kartların eşit genişlikte olmasını sağlar */
+            background-color: var(--white);
+            padding: 2vh 2vw;
             border-radius: 12px;
             text-align: center;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            border-bottom: 4px solid transparent;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            border-bottom: 4px solid var(--primary-gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .feature-icon {
-            font-size: 40px;
-            color: var(--primary-gold);
-            margin-bottom: 20px;
+            font-size: clamp(24px, 4vh, 40px);
+            margin-bottom: 1vh;
         }
 
         .feature-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
+            font-size: clamp(14px, 2vh, 20px);
+            margin-bottom: 1vh;
             color: var(--text-dark);
         }
 
         .feature-card p {
-            font-size: 15px;
+            font-size: clamp(11px, 1.5vh, 15px);
             color: var(--text-light);
+            line-height: 1.4;
+            margin: 0;
         }
 
-        /* --- Animasyonlar --- */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Mobil Uyumluluk --- */
+        /* --- İkas İçi Mobil/Dar Ekran Uyumluluğu --- */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 28px;
+            .features-grid {
+                flex-direction: column; /* Mobilde alt alta dizer */
+                gap: 1.5vh;
             }
-            .about-section {
-                padding: 60px 5vw;
+            .hero img {
+                max-height: 12vh;
+            }
+            .feature-card {
+                padding: 1.5vh 3vw;
             }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <img src="logo.png" alt="Marla Technology Logo">
-        <h1>Teknolojide Sınırları Aşan <strong>Deneyim</strong></h1>
-    </section>
+    <div class="main-container">
+        <section class="hero">
+            <img src="logo.png" alt="Marla Technology Logo">
+            <h1>Teknolojide Sınırları Aşan <strong>Deneyim</strong></h1>
+        </section>
 
-    <section class="about-section">
         <div class="about-intro">
             <h2>Hakkımızda</h2>
             <p>İstanbul merkezli bir teknoloji üssü olarak faaliyet gösteren <strong>Marla Technology</strong>, elektronik ürün üretimi ve ithalatı alanında sektörün köklü, güvenilir ve öncü gücüdür. Yılların getirdiği derin tecrübe ve yenilikçi vizyonumuzla, teknolojiyi yalnızca takip eden değil, ona yön veren bir marka olmanın gururunu taşıyoruz.</p>
@@ -183,7 +183,7 @@
             </div>
 
         </div>
-    </section>
+    </div>
 
 </body>
 </html>
